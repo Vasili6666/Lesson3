@@ -36,14 +36,13 @@ public class SimpleJUniteTest {
             $("#userEmail").setValue("pupkin@basil.com");
             $("label[for='gender-radio-1']").click();
             $("#userNumber").setValue("0441234567");
-
-            // Правильное заполнение поля Subjects
             $("#subjectsInput").setValue("Bio");
             $$(".subjects-auto-complete__option").findBy(Condition.text("Biology")).click();
             $("label[for='hobbies-checkbox-1']").click();
             $("label[for='hobbies-checkbox-2']").click();
             $("label[for='hobbies-checkbox-3']").click();
             $("#uploadPicture").uploadFromClasspath("Foto 07.2024.jpg");
+            $("#currentAddress").setValue("Площадь Пушкина, пр-д Калатушкина, 6");
 
             $("#submit").scrollTo().click();
 
