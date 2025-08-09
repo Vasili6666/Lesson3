@@ -43,6 +43,10 @@ public class SimpleJUniteTest {
             $("label[for='hobbies-checkbox-3']").click();
             $("#uploadPicture").uploadFromClasspath("Foto 07.2024.jpg");
             $("#currentAddress").setValue("Площадь Пушкина, пр-д Калатушкина, 6");
+            $("#state").click();
+            $$("div[class*='-option']").findBy(text("Haryana")).click();
+            $("#city").click();
+            $$("div[class*='-option']").findBy(text("Karnal")).click();
 
             $("#submit").scrollTo().click();
 
@@ -52,8 +56,6 @@ public class SimpleJUniteTest {
         executeJavaScript("document.querySelector('.modal-content').style.width='100%';");
         executeJavaScript("document.querySelector('.modal-content').style.height='auto';");
         $("#closeLargeModal").scrollIntoView(true).click();
-        //$("#output #email").shouldHave(text("alex@egorov.com"));
-        //$("#output #currentAddress").shouldHave(text("Some street 1"));
-        //$("#output #permanentAddress").shouldHave(text("Another street 1"));
+
     }
 }
