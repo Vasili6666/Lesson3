@@ -41,6 +41,9 @@ public class SimpleJUniteTest {
             $("#subjectsInput").setValue("Bio");
             $$(".subjects-auto-complete__option").findBy(Condition.text("Biology")).click();
             $("label[for='hobbies-checkbox-1']").click();
+            $("label[for='hobbies-checkbox-2']").click();
+            $("label[for='hobbies-checkbox-3']").click();
+            $("#uploadPicture").uploadFromClasspath("Foto 07.2024.jpg");
 
             $("#submit").scrollTo().click();
 
