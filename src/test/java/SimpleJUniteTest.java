@@ -1,3 +1,4 @@
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 
@@ -30,26 +31,29 @@ public class SimpleJUniteTest {
     void fillFormTest() {
 
 
-            open("/automation-practice-form");
-            $("#firstName").setValue("Basil");
-            $("#lastName").setValue("Pupkin");
-            $("#userEmail").setValue("pupkin@basil.com");
-            $("label[for='gender-radio-1']").click();
-            $("#userNumber").setValue("0441234567");
-            $("#subjectsInput").setValue("Bio");
-            $$(".subjects-auto-complete__option").findBy(Condition.text("Biology")).click();
-            $("label[for='hobbies-checkbox-1']").click();
-            $("label[for='hobbies-checkbox-2']").click();
-            $("label[for='hobbies-checkbox-3']").click();
-            $("#uploadPicture").uploadFromClasspath("Foto 07.2024.jpg");
-            $("#currentAddress").setValue("Площадь Пушкина, пр-д Калатушкина, 6");
-            $("#state").click();
-            $$("div[class*='-option']").findBy(text("Haryana")).click();
-            $("#city").click();
-            $$("div[class*='-option']").findBy(text("Karnal")).click();
+        open("/automation-practice-form");
+        $("#firstName").setValue("Basil");
+        $("#lastName").setValue("Pupkin");
+        $("#userEmail").setValue("pupkin@basil.com");
+        $("label[for='gender-radio-1']").click();
+        $("#userNumber").setValue("0441234567");
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").selectOption("February");
+        $(".react-datepicker__year-select").selectOption("1982");
+        $(".react-datepicker__day--006:not(.react-datepicker__day--outside-month)").click();
+        $("#subjectsInput").setValue("Bio");
+        $$(".subjects-auto-complete__option").findBy(Condition.text("Biology")).click();
+        $("label[for='hobbies-checkbox-1']").click();
+        $("label[for='hobbies-checkbox-2']").click();
+        $("label[for='hobbies-checkbox-3']").click();
+        $("#uploadPicture").uploadFromClasspath("Foto 07.2024.jpg");
+        $("#currentAddress").setValue("Площадь Пушкина, пр-д Калатушкина, 6");
+        $("#state").click();
+        $$("div[class*='-option']").findBy(text("Haryana")).click();
+        $("#city").click();
+        $$("div[class*='-option']").findBy(text("Karnal")).click();
 
-            $("#submit").scrollTo().click();
-
+        $("#submit").scrollTo().click();
 
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
