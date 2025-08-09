@@ -40,6 +40,7 @@ public class SimpleJUniteTest {
             // Правильное заполнение поля Subjects
             $("#subjectsInput").setValue("Bio");
             $$(".subjects-auto-complete__option").findBy(Condition.text("Biology")).click();
+            $("label[for='hobbies-checkbox-1']").click();
 
             $("#submit").scrollTo().click();
 
