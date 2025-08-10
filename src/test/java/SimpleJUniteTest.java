@@ -34,7 +34,8 @@ public class SimpleJUniteTest {
         $("#firstName").setValue("Basil");
         $("#lastName").setValue("Pupkin");
         $("#userEmail").setValue("pupkin@basil.com");
-        $("label[for='gender-radio-1']").click();
+        $("#genterWrapper").$x(".//label[contains(text(), 'Male')]").click();
+
         $("#userNumber").setValue("0441234567");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("February");
@@ -59,6 +60,11 @@ public class SimpleJUniteTest {
         executeJavaScript("document.querySelector('.modal-content').style.width='100%';");
         executeJavaScript("document.querySelector('.modal-content').style.height='auto';");
         $("#closeLargeModal").scrollIntoView(true).click();
-
+/*2) Я бы советовал переделать выбор пола и хобби, чтобы избавиться от использования селекторов
+ с порядковыми номерами. В дальнейшем при развитии проекта с текущим вариантом будет сложнее,
+  ну и в целом к порядковым номерам стоит привязываться только в том случае,
+   если другого способа нет, т.к. порядок элементов на странице может поменяться
+    в любой момент, и тесты упадут. Лучше сделать поиск по тексту в конкретном месте страницы,
+     в данном случае в #genterWrapper и в #hobbiesWrapper  */
     }
 }
