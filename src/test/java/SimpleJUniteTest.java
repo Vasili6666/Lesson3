@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 
+import static com.codeborne.selenide.Condition.interactable;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -34,25 +35,38 @@ public class SimpleJUniteTest {
         $("#firstName").setValue("Basil");
         $("#lastName").setValue("Pupkin");
         $("#userEmail").setValue("pupkin@basil.com");
-        $("#genterWrapper").$x(".//label[contains(text(), 'Male')]").click();
-
+        $$("#genterWrapper label").filterBy(text("Male")).first().click();
         $("#userNumber").setValue("0441234567");
+
+// Дата рождения
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("February");
         $(".react-datepicker__year-select").selectOption("1982");
         $(".react-datepicker__day--006:not(.react-datepicker__day--outside-month)").click();
+
+// Subjects
         $("#subjectsInput").setValue("Bio");
-        $$(".subjects-auto-complete__option").findBy(Condition.text("Biology")).click();
+        $$(".subjects-auto-complete__option").findBy(text("Biology")).click();
+
+// Hobbies
         $("label[for='hobbies-checkbox-1']").click();
         $("label[for='hobbies-checkbox-2']").click();
         $("label[for='hobbies-checkbox-3']").click();
+
+// Upload picture
         $("#uploadPicture").uploadFromClasspath("Foto 07.2024.jpg");
+
+// Address
         $("#currentAddress").setValue("Площадь Пушкина, пр-д Калатушкина, 6");
-        $("#state").click();
+
+// State и City с прокруткой и ожиданием
+        $("#state").scrollTo().shouldBe(interactable).click();
         $$("div[class*='-option']").findBy(text("Haryana")).click();
-        $("#city").click();
+
+        $("#city").scrollTo().shouldBe(interactable).click();
         $$("div[class*='-option']").findBy(text("Karnal")).click();
 
+// Submit
         $("#submit").scrollTo().click();
 
 
