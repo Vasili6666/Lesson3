@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 
+import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Condition.interactable;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -73,14 +74,22 @@ public class SimpleJUniteTest {
 
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        executeJavaScript("document.querySelector('.modal-content').style.width='100%';");
-        executeJavaScript("document.querySelector('.modal-content').style.height='auto';");
-        $("#closeLargeModal").scrollIntoView(true).click();
-/*2) Я бы советовал переделать выбор пола и хобби, чтобы избавиться от использования селекторов
- с порядковыми номерами. В дальнейшем при развитии проекта с текущим вариантом будет сложнее,
-  ну и в целом к порядковым номерам стоит привязываться только в том случае,
-   если другого способа нет, т.к. порядок элементов на странице может поменяться
-    в любой момент, и тесты упадут. Лучше сделать поиск по тексту в конкретном месте страницы,
-     в данном случае в #genterWrapper и в #hobbiesWrapper  */
+
+        // Проверка данных в таблице
+        $$("table tbody tr").shouldHave(
+                exactTexts(
+                        "Student Name Basil Pupkin",
+                        "Student Email pupkin@basil.com",
+                        "Gender Male",
+                        "Mobile 0441234567",
+                        "Date of Birth 06 February,1982",
+                        "Subjects Biology",
+                        "Hobbies Sports, Reading, Music",
+                        "Picture Foto 07.2024.jpg",
+                        "Address Площадь Пушкина, пр-д Калатушкина, 6",
+                        "State and City Haryana Karnal"
+                )
+        );
+
     }
 }
