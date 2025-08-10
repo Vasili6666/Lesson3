@@ -49,9 +49,11 @@ public class SimpleJUniteTest {
         $$(".subjects-auto-complete__option").findBy(text("Biology")).click();
 
 // Hobbies
-        $("label[for='hobbies-checkbox-1']").click();
-        $("label[for='hobbies-checkbox-2']").click();
-        $("label[for='hobbies-checkbox-3']").click();
+        $$("#hobbiesWrapper label").filterBy(text("Sports")).first().click();
+        $$("#hobbiesWrapper label").filterBy(text("Reading")).first().click();
+        $$("#hobbiesWrapper label").filterBy(text("Music")).first().click();
+
+
 
 // Upload picture
         $("#uploadPicture").uploadFromClasspath("Foto 07.2024.jpg");
